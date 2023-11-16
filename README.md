@@ -1,4 +1,4 @@
-[![Documentation Status](https://readthedocs.org/projects/tsfel/badge/?version=latest)](https://tsfel.readthedocs.io/en/latest/?badge=latest)
+[![Documentation Status](https://readthedocs.org/projects/dream/badge/?version=latest)](https://dream.readthedocs.io/en/latest/?badge=latest)
 [![license](https://img.shields.io/badge/License-BSD%203-brightgreen)](https://github.com/piinyin/dream/blob/master/LICENSE.txt)
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/dream)
 ![PyPI](https://img.shields.io/pypi/v/dream)
@@ -40,10 +40,10 @@ import pandas as pd
 df = pd.read_csv('Dataset.txt')
 
 # Retrieves a pre-defined feature configuration file to extract all available features
-cfg = tsfel.get_features_by_domain()
+cfg = dream.get_features_by_domain()
 
 # Extract features
-X = tsfel.time_series_features_extractor(cfg, df)
+X = dream.time_series_features_extractor(cfg, df)
 ```
 
 ## Available features
@@ -126,7 +126,7 @@ X = tsfel.time_series_features_extractor(cfg, df)
 ## Citing
 For citation, use the following publication:
 
-Khadka et al. "*DREAM:A python framework to train deep learning models with model card reporting for medical and health applications*" SoftwareX 11 (2024). [https://doi.org/10.106/j.softx.2024.106](https://doi.org/10.106/j.softx.2024)
+Khadka et al. "*DREAM:A python framework to train deep learning models with model card reporting for medical and health applications*" . [https://doi.org/10.106/j.softx.2024.106](https://doi.org/10.106/j.softx.2024)
 
 ## Acknowledgements
 This work has received funding from the European Union's Horizon 2020 research and innovation program under grant agreement No. 964220. We conducted experiments on the Experimental Infrastructure for Exploration of Exascale Computing (eX3) system, financially supported by RCN under contract 270053.

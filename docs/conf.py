@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# TSFEL documentation build configuration file, created by
+# DREAM documentation build configuration file, created by
 # sphinx-quickstart on Tue Nov  5 08:17:41 2019.
 #
 # This file is execfile()d with the current directory set to its
@@ -25,7 +25,7 @@ if os.environ.get('READTHEDOCS', None) == 'True':
     __location__ = os.path.join(os.getcwd(), os.path.dirname(inspect.getfile(inspect.currentframe())))
 
     output_dir = os.path.join(__location__, "../docs/descriptions/modules")
-    module_dir = os.path.join(__location__, "../tsfel")
+    module_dir = os.path.join(__location__, "../dream")
     cmd_line_template = "sphinx-apidoc -f -o {outputdir} {moduledir}"
     cmd_line = cmd_line_template.format(outputdir=output_dir, moduledir=module_dir)
     apidoc.main(cmd_line.split(" "))
@@ -60,7 +60,7 @@ master_doc = 'index'
 # General information about the project.
 import datetime
 now = datetime.datetime.today()
-project = u'TSFEL'
+project = u'DREAM'
 copyright = u'2021, Fraunhofer AICOS'
 author = u'Fraunhofer AICOS'
 
@@ -116,7 +116,7 @@ html_static_path = []
 # -- Options for HTMLHelp output ------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'TSFELdoc'
+htmlhelp_basename = 'DREAMdoc'
 
 
 # -- Options for LaTeX output ---------------------------------------------
@@ -143,7 +143,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'TSFEL.tex', u'TSFEL Documentation',
+    (master_doc, 'DREAM.tex', u'DREAM Documentation',
      u'Fraunhofer AICOS', 'manual'),
 ]
 
@@ -153,7 +153,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'tsfel', u'TSFEL Documentation',
+    (master_doc, 'dream', u'DREAM Documentation',
      [author], 1)
 ]
 
@@ -164,8 +164,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'TSFEL', u'TSFEL Documentation',
-     author, 'TSFEL', 'One line description of project.',
+    (master_doc, 'DREAM', u'DREAM Documentation',
+     author, 'DREAM', 'One line description of project.',
      'Miscellaneous'),
 ]
 

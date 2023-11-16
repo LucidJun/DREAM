@@ -1,12 +1,12 @@
-Welcome to TSFEL documentation!
+Welcome to DREAM documentation!
 ===============================
 
-.. image:: imgs/tsfel_logo.png
+.. image:: imgs/logo.png
     :align: center
     :scale: 35 %
-    :alt: TSFEL!
+    :alt: DREAM!
 
-Time Series Feature Extraction Library (TSFEL for short) is a Python package for feature extraction on time series data. It provides exploratory feature extraction tasks on time series without requiring significant programming effort. TSFEL automatically extracts over 60 different features on the statistical, temporal and spectral domains. TSFEL was built by data scientists for data scientists!
+Time Series Feature Extraction Library (DREAM for short) is a Python package for feature extraction on time series data. It provides exploratory feature extraction tasks on time series without requiring significant programming effort. DREAM automatically extracts over 60 different features on the statistical, temporal and spectral domains. DREAM was built by data scientists for data scientists!
 
 Highlights
 ==========
@@ -39,7 +39,7 @@ Installation can be easily done with ``pip``:
 
 .. code:: bash
 
-    $ pip install tsfel
+    $ pip install dream
 
 Get started
 ===========
@@ -48,17 +48,17 @@ The code below extracts all the available features on an example dataset.
 
 .. code:: python
 
-    import tsfel
+    import dream
     import pandas as pd
 
     # load dataset
     df = pd.read_csv('Dataset.txt')
 
     # Retrieves a pre-defined feature configuration file to extract all available features
-    cfg = tsfel.get_features_by_domain()
+    cfg = dream.get_features_by_domain()
 
     # Extract features
-    X = tsfel.time_series_features_extractor(cfg, df)
+    X = dream.time_series_features_extractor(cfg, df)
 
 Indices and tables
 ==================
