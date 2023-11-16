@@ -1,12 +1,12 @@
 Module Reference
 ================
 
-.. automodule:: tsfel
+.. automodule:: dream
     :members:
     :undoc-members:
     :show-inheritance:
 
 .. toctree::
 
-    modules/tsfel.feature_extraction
-    modules/tsfel.utils
+    modules/dream.feature_extraction
+    modules/dream.utils

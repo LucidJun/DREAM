@@ -2,7 +2,7 @@
 Personalised features
 =====================
 
-TSFEL provides a comprehensive set of features that can be applied in time series across several domains.
+dream provides a comprehensive set of features that can be applied in time series across several domains.
 
 We also provide flexibility for users who desire to add personalised features to those that are already available in the library.
 Personalised features are saved locally and users who want to share their implementations can create a pull request. Contributions are more than welcome and greatly appreciated!
@@ -16,7 +16,7 @@ An example of a feature implementation format is shown below.
 
 .. code:: python
 
-    from tsfel.features_utils import set_domain
+    from dream.features_utils import set_domain
 
     @set_domain("domain", "temporal")
     def custom_feature(signal, parameters):
@@ -38,14 +38,14 @@ An example of a feature implementation format is shown below.
 
         return feature
 
-The available domains are *statistical*, *temporal* and *spectral*. Also, note that TSFEL uses the ``fs`` variable to represent the sampling frequency parameter. Use this notation to take full advantage of the library for features which require the sampling frequency.
+The available domains are *statistical*, *temporal* and *spectral*. Also, note that dream uses the ``fs`` variable to represent the sampling frequency parameter. Use this notation to take full advantage of the library for features which require the sampling frequency.
 
 2. Add the new feature to features.json
 ---------------------------------------
 
-After implementing your feature, use the ``add_feature_json`` function from ``tsfel.add_personal_features`` to store your personal feature information. This method adds the metadata from previously implemented feature to a JSON file which is used as configurator in TSFEL.
+After implementing your feature, use the ``add_feature_json`` function from ``dream.add_personal_features`` to store your personal feature information. This method adds the metadata from previously implemented feature to a JSON file which is used as configurator in dream.
 
-A JSON example file is available `here <https://github.com/fraunhoferportugal/tsfel/blob/development/tsfel/feature_extraction/features.json>`_.
+A JSON example file is available `here <https://github.com/fraunhoferportugal/dream/blob/development/dream/feature_extraction/features.json>`_.
 
 .. code:: python
 
@@ -58,7 +58,7 @@ A JSON example file is available `here <https://github.com/fraunhoferportugal/ts
         Personal Python module directory containing new features implementation.
 
     json_path: string
-        Personal .json file directory containing existing features from TSFEL.
+        Personal .json file directory containing existing features from dream.
         New customised features will be added to file in this directory.
 
     """
@@ -66,26 +66,26 @@ A JSON example file is available `here <https://github.com/fraunhoferportugal/ts
 3. Extract your feature
 -----------------------
 
-The newly implemented feature is ready to be extracted. You must pass as an argument the path of the script where the implemented features in step 1 reside (``features_path``). TSFEL will do the rest for you.
+The newly implemented feature is ready to be extracted. You must pass as an argument the path of the script where the implemented features in step 1 reside (``features_path``). dream will do the rest for you.
 
 .. code:: python
 
-	features = tsfel.time_series_features_extractor(dict_features, signal_windows, fs=None, window_spliter=False, personal_dir=my_dir)
+	features = dream.time_series_features_extractor(dict_features, signal_windows, fs=None, window_spliter=False, personal_dir=my_dir)
 
 
 4. Create a pull request (optional)
 -----------------------------------
 
-If you would like to contribute to TSFEL growth, remember to add a pull request on our GitHub page with your feature implementation.
+If you would like to contribute to dream growth, remember to add a pull request on our GitHub page with your feature implementation.
 
-To add your feature to TSFEL complete the following steps:
+To add your feature to dream complete the following steps:
 
-1. Fork TSFEL's Development branch
+1. Fork dream's Development branch
 
-2. Add your feature implementation to `/tsfel/feature_extraction/features.py <https://github.com/fraunhoferportugal/tsfel/blob/development/tsfel/feature_extraction/features.py>`_
+2. Add your feature implementation to `/dream/feature_extraction/features.py <https://github.com/fraunhoferportugal/dream/blob/development/dream/feature_extraction/features.py>`_
 
-3. Add documentation for the new feature in `/tsfel/feature_extraction/features.json <https://github.com/fraunhoferportugal/tsfel/blob/development/tsfel/feature_extraction/features.json>`_
+3. Add documentation for the new feature in `/dream/feature_extraction/features.json <https://github.com/fraunhoferportugal/dream/blob/development/dream/feature_extraction/features.json>`_
 
-4. Develop unit tests for the new feature in `/tests/test_features.py <https://github.com/fraunhoferportugal/tsfel/blob/development/tests/test_features.py>`_
+4. Develop unit tests for the new feature in `/tests/test_features.py <https://github.com/fraunhoferportugal/dream/blob/development/tests/test_features.py>`_
 
-5. Create a pull request in `GitHub <hhttps://github.com/fraunhoferportugal/tsfel>`_
+5. Create a pull request in `GitHub <hhttps://github.com/fraunhoferportugal/dream>`_

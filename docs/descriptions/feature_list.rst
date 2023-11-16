@@ -1,13 +1,13 @@
 List of available features
 ==========================
 
-The following table provides an overview of the available featurest in the current version of TSFEL.
+The following table provides an overview of the available featurest in the current version of dream.
 
 .. autosummary::
    :toctree: _generated
    :template: module_functions_template.rst
 
-    tsfel.feature_extraction.features
+    dream.feature_extraction.features
 
 
-.. include:: _generated/tsfel.feature_extraction.features.rst
+.. include:: _generated/dream.feature_extraction.features.rst

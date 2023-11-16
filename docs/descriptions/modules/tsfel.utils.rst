@@ -1,7 +1,7 @@
 utils
 =====
 
-.. automodule:: tsfel.utils
+.. automodule:: dream.utils
     :members:
     :undoc-members:
     :show-inheritance:
@@ -9,7 +9,7 @@ utils
 calculate_complexity
 --------------------
 
-.. automodule:: tsfel.utils.calculate_complexity
+.. automodule:: dream.utils.calculate_complexity
     :members:
     :undoc-members:
     :show-inheritance:
@@ -17,7 +17,7 @@ calculate_complexity
 signal_processing
 -----------------
 
-.. automodule:: tsfel.utils.signal_processing
+.. automodule:: dream.utils.signal_processing
     :members:
     :undoc-members:
     :show-inheritance:
