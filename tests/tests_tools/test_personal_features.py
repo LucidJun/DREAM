@@ -1,4 +1,4 @@
-from tsfel.feature_extraction.features_utils import set_domain
+from dream.feature_extraction.features_utils import set_domain
 import numpy as np
 
 

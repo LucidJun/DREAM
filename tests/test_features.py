@@ -2,7 +2,7 @@ import unittest
 
 import numpy as np
 
-from tsfel.feature_extraction.features import *
+from dream.feature_extraction.features import *
 
 
 # Unit testing for Linux OS

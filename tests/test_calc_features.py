@@ -1,13 +1,13 @@
 import os
 import json
 import glob
-# import tsfel
+# import dream
 import pandas as pd
 from pathlib import Path
-from tsfel.feature_extraction.features_settings import get_features_by_domain, get_features_by_tag
-from tsfel.feature_extraction.calc_features import time_series_features_extractor, dataset_features_extractor
-from tsfel.utils.signal_processing import merge_time_series, signal_window_splitter
-from tsfel.utils.add_personal_features import add_feature_json
+from dream.feature_extraction.features_settings import get_features_by_domain, get_features_by_tag
+from dream.feature_extraction.calc_features import time_series_features_extractor, dataset_features_extractor
+from dream.utils.signal_processing import merge_time_series, signal_window_splitter
+from dream.utils.add_personal_features import add_feature_json
 
 # Example of user preprocess sensor data
 def pre_process(sensor_data):
@@ -20,7 +20,7 @@ def pre_process(sensor_data):
 main_directory = os.path.join("tests", "tests_tools", "test_dataset", "")
 
 # JSON DIR
-# tsfel_path_json = tsfel.__path__[0] + os.sep + "feature_extraction" + os.sep + "features.json"
+# dream_path_json = dream.__path__[0] + os.sep + "feature_extraction" + os.sep + "features.json"
 personal_path_json = os.path.join("tests", "tests_tools", "test_features.json")
 personal_features_path = os.path.join("tests", "tests_tools", "test_personal_features.py")
 
@@ -30,7 +30,7 @@ resample_rate = 30  # resample sampling frequency
 window_size = 100  # number of points
 overlap = 0  # varies between 0 and 1
 search_criteria = ["Accelerometer.txt", "Gyroscope.txt"]
-output_directory = str(Path.home()) + os.sep + "Documents" + os.sep + "tsfel_output" + os.sep
+output_directory = str(Path.home()) + os.sep + "Documents" + os.sep + "dream_output" + os.sep
 sensor_data = {}
 key = "Accelerometer"
 
@@ -39,7 +39,7 @@ sensor_data[key] = pd.read_csv(folders[-1] + key + ".txt", header=None)
 
 
 # Features Dictionary
-# settings0 = json.load(open(tsfel_path_json))
+# settings0 = json.load(open(dream_path_json))
 settings2 = get_features_by_domain("statistical")
 settings3 = get_features_by_domain("temporal")
 settings4 = get_features_by_domain("spectral")
