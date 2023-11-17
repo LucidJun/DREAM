@@ -45,7 +45,7 @@ The available domains are *statistical*, *temporal* and *spectral*. Also, note t
 
 After implementing your feature, use the ``add_feature_json`` function from ``dream.add_personal_features`` to store your personal feature information. This method adds the metadata from previously implemented feature to a JSON file which is used as configurator in DREAM.
 
-A JSON example file is available `here <https://github.com/fraunhoferportugal/dream/blob/development/dream/feature_extraction/features.json>`_.
+A JSON example file is available `here <https://github.com/Piinyin/dream/blob/development/dream/feature_extraction/features.json>`_.
 
 .. code:: python
 
@@ -82,10 +82,10 @@ To add your feature to DREAM complete the following steps:
 
 1. Fork DREAM's Development branch
 
-2. Add your feature implementation to `/dream/feature_extraction/features.py <https://github.com/fraunhoferportugal/dream/blob/development/dream/feature_extraction/features.py>`_
+2. Add your feature implementation to `/dream/feature_extraction/features.py <https://github.com/Piinyin/dream/blob/development/dream/feature_extraction/features.py>`_
 
-3. Add documentation for the new feature in `/dream/feature_extraction/features.json <https://github.com/fraunhoferportugal/dream/blob/development/dream/feature_extraction/features.json>`_
+3. Add documentation for the new feature in `/dream/feature_extraction/features.json <https://github.com/Piinyin/dream/blob/development/dream/feature_extraction/features.json>`_
 
-4. Develop unit tests for the new feature in `/tests/test_features.py <https://github.com/fraunhoferportugal/dream/blob/development/tests/test_features.py>`_
+4. Develop unit tests for the new feature in `/tests/test_features.py <https://github.com/Piinyin/dream/blob/development/tests/test_features.py>`_
 
-5. Create a pull request in `GitHub <hhttps://github.com/fraunhoferportugal/dream>`_
+5. Create a pull request in `GitHub <hhttps://github.com/Piinyin/dream>`_

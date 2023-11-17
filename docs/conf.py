@@ -18,8 +18,13 @@
 
 import os
 import inspect
+import sys
 from sphinx.ext import apidoc
 
+
+
+# Add your project to the Python path (if needed)
+sys.path.insert(0, os.path.abspath('..'))
 
 if os.environ.get('READTHEDOCS', None) == 'True':
   
