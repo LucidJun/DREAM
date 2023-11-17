@@ -36,10 +36,8 @@ if os.environ.get('READTHEDOCS', None) == 'True':
   
     output_dir = os.path.join(__location__, "../docs/descriptions/modules")
     module_dir = os.path.join(__location__, "../dream")
-    cmd_line_template = "sphinx-apidoc -f -o {outputdir} {moduledir}"
-    cmd_line = f"sphinx-apidoc -f -o {output_dir} {module_dir}"
-
-    apidoc.main(cmd_line.split(" "))
+    apidoc.main(['-f', '-o', output_dir, module_dir])
+    
 
     
 
