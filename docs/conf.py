@@ -18,7 +18,6 @@
 
 import os
 import inspect
-import sphinx_rtd_theme
 from sphinx.ext import apidoc
 
 
@@ -204,4 +203,5 @@ epub_exclude_files = ['search.html']
 # Example configuration for intersphinx: refer to the Python standard library.
 intersphinx_mapping = {
     'python': ('https://docs.python.org/3', None),
+    'sphinx': ('https://www.sphinx-doc.org/en/master/', None),
 }
