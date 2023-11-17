@@ -33,14 +33,13 @@ DREAM is optimized for time series and **automatically extracts over 60 differen
 The code below extracts all the available features on an example dataset file.
 
 ```python
-import dream
+
 import pandas as pd
 
 # load dataset
 df = pd.read_csv('Dataset.txt')
 
-# Retrieves a pre-defined feature configuration file to extract all available features
-cfg = dream.get_features_by_domain()
+
 
 # Extract features
 X = dream.time_series_features_extractor(cfg, df)
