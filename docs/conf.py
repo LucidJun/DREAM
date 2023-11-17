@@ -17,7 +17,6 @@
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 
 import os
-import sphinx_rtd_theme
 import inspect
 from sphinx.ext import apidoc
 
