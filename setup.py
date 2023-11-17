@@ -22,7 +22,7 @@ docs_require = find_requirements("requirements-docs.txt")
 setuptools.setup(
     name="dream",
     version="0.1",
-    author="Pinnyin",
+    author="Piinyin",
     description="Library for DL models reporting",
     long_description=long_description,
     long_description_content_type="text/markdown",
