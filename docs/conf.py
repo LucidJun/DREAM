@@ -21,7 +21,7 @@ import inspect
 import sys
 from sphinx.ext import apidoc
 
-
+import dream
 
 # Add your project to the Python path (if needed)
 sys.path.insert(0, os.path.abspath('..'))
@@ -41,6 +41,8 @@ if os.environ.get('READTHEDOCS', None) == 'True':
   
     output_dir = os.path.join(__location__, "../docs/descriptions/modules")
     module_dir = os.path.join(__location__, "../dream")
+    print(module_dir)
+    print(output_dir)
     apidoc.main(['-f', '-o', output_dir, module_dir])
     
 
