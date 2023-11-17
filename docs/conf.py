@@ -20,7 +20,8 @@ import os
 
 if os.environ.get('READTHEDOCS', None) == 'True':
     import inspect
-    from sphinx import apidoc
+    from sphinx.ext import apidoc
+
 
     __location__ = os.path.join(os.getcwd(), os.path.dirname(inspect.getfile(inspect.currentframe())))
 
