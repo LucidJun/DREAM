@@ -29,15 +29,15 @@ if os.environ.get('READTHEDOCS', None) == 'True':
     
     apidoc.main(['-f', '-o', output_dir, module_dir])
 
-   """
+    """
     __location__ = os.path.join(os.getcwd(), os.path.dirname(inspect.getfile(inspect.currentframe())))
-
+  
     output_dir = os.path.join(__location__, "../docs/descriptions/modules")
     module_dir = os.path.join(__location__, "../dream")
     cmd_line_template = "sphinx-apidoc -f -o {outputdir} {moduledir}"
     cmd_line = cmd_line_template.format(outputdir=output_dir, moduledir=module_dir)
     apidoc.main(cmd_line.split(" "))
-    
+
     """
 
 # -- General configuration ------------------------------------------------
