@@ -25,7 +25,7 @@ FAQ
 
     * **Do I have examples showcasing a complete pipeline using DREAM?**
 
-       Sure, we provide several notebooks with examples of complete classification pipelines using DREAM. The notebooks are available `here <https://github.com/fraunhoferportugal/DREAM/tree/master/notebooks/>`_. If you want to share a notebook with additional pipelines, please feel free to reach us.
+       Sure, we provide several notebooks with examples of complete classification pipelines using DREAM. The notebooks are available `here <https://github.com/fraunhoferportugal/dream/tree/master/notebooks/>`_. If you want to share a notebook with additional pipelines, please feel free to reach us.
 
 
     * **Why should I use DREAM?**
@@ -35,4 +35,4 @@ FAQ
 
     * **How can I give the authors credit for their work?**
 
-       If you used DREAM we would be appreciated if you star our `GitHub <https://github.com/fraunhoferportugal/DREAM/>`_ repository. In case you use DREAM during your research, you would be happy if you can `cite our work <https://www.sciencedirect.com/science/article/pii/S2352711020300017/>`_.
+       If you used DREAM we would be appreciated if you star our `GitHub <https://github.com/fraunhoferportugal/dream/>`_ repository. In case you use DREAM during your research, you would be happy if you can `cite our work <https://www.sciencedirect.com/science/article/pii/S2352711020300017/>`_.

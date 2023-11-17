@@ -1,20 +1,20 @@
 Authors
 ==========
-This package is being developed and maintained by `PiDream team  <https://www.pinnyin.dream.io>`_.
+This package is being developed and maintained by `Pinnyin <https://www.pinnyin.io>`_.
 
 .. image:: imgs/logo.png
     :align: center
     :scale: 25 %
     :alt: PiDream
 
-Dream was written in collaboration with `AIMind project and AILab at Osomet universtiy <https://www.oslomet.no>`_.
+DREAM was written in collaboration with `Cognitive Systems Lab of University of Bremen <https://www.uni-bremen.de/csl/>`_.
 
 Lead Development Team
 ---------------------
 
-- Rabindra (`rabindra.khadka@ymail.com <rabindra.khadka@ymail.com>`_)
-- Pedro Lind (`pedrolin@oslomet.no <pedrolin@oslomet.no>`_)
-- Anis Yazidi  (`anisy@oslomet.no <anisy@oslomet.no>`_)
+- Rabindra Khadka (`rabindra.khadka@ymail.com <rabindra.khadka@ymail.com>`_)
+- Pedro Lind (`pedrolin@gmail.com <pedrolin@gmail.com>`_)
+- Anis Yazidi  (`anisy@gmail.com <anisy@gmail.com>`_)
 
 
 Contributors
@@ -25,19 +25,18 @@ Contributors
 
 Citing DREAM
 --------------
-DREAM was published in Khadka et al. "*DREAM: Deep Report for AI Models.*" SoftwareX (2024). [https://doi.org/10.101/j.softx.2024.](https://doi.org/10.101/j.softx.2024.)
+DREAM was published in "*DREAM: *" Softwa 11 (20). [https://doi.org/1016/j.softx.2](https://doi.org/106/j.)
 
-For citation:
-
+For citation , use the following:
 
   Bibtex entry::
 
     @article{khadka2024dream,
-      title={DREAM: A python framework to train deep learning models with model card reporting for medical and health applications. },
-      author={Khadka},
-      journal={SoftwareX},
-      volume={11},
-      pages={},
+      title={DREAM: },
+      author={Khadka, ......},
+      journal={.....},
+      volume={1},
+      pages={324},
       year={2024},
       publisher={Elsevier}
     }

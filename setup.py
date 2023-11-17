@@ -21,12 +21,12 @@ docs_require = find_requirements("requirements-docs.txt")
 
 setuptools.setup(
     name="dream",
-    version="0.1.0",
-    author="Piinyin",
-    description="Libray for model card reporting",
+    version="0.1",
+    author="Pinnyin",
+    description="Library for DL models reporting",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/piinyin/dream/",
+    url="https://github.com/Piinyin/DREAM",
     package_data={
         "dream": ["feature_extraction/features.json"]
     },

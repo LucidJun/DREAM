@@ -1,13 +1,13 @@
 [![Documentation Status](https://readthedocs.org/projects/dream/badge/?version=latest)](https://dream.readthedocs.io/en/latest/?badge=latest)
-[![license](https://img.shields.io/badge/License-BSD%203-brightgreen)](https://github.com/piinyin/dream/blob/master/LICENSE.txt)
+[![license](https://img.shields.io/badge/License-BSD%203-brightgreen)](https://github.com/pinnyin/dream/blob/master/LICENSE.txt)
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/dream)
 ![PyPI](https://img.shields.io/pypi/v/dream)
 [![Downloads](https://pepy.tech/badge/dream)](https://pepy.tech/project/dream)
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/piiyin/dream/blob/master/notebooks/dream_eeg_Example.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/pinnyin/dream/blob/master/notebooks/EEG_Example.ipynb)
 
 # Deep Report for AI Models
-## Pipeline for training, testing,uncertainity with  model card reporting
-This repository hosts the **DREAM - Deep Report for AI Models** python package. DREAM  assists researchers quickly build training and testing pipeline for model tranining with the capacity of model card reporting.
+## Training , Testing and Reporting
+This repository hosts the **DREAM - Deep Report for AI Models** python package. DREAM assists researchers on exploratory feature extraction tasks on time series without requiring significant programming effort.
 
 Users can interact with DREAM using two methods:
 ##### Online
@@ -53,9 +53,6 @@ X = dream.time_series_features_extractor(cfg, df)
 |----------------------------|:------------------:|
 | Absolute energy            |          1         |
 | Average power              |          1         |
-| ECDF                       |          1         |
-| ECDF Percentile            |          1         |
-| ECDF Percentile Count      |          1         |
 | Entropy                    |          1         |
 | Histogram                  |          1         |
 | Interquartile range        |          1         |
@@ -72,24 +69,7 @@ X = dream.time_series_features_extractor(cfg, df)
 | Variance                   |          1         |
 
 
-#### Temporal domain
-| Features                   | Computational Cost |
-|----------------------------|:------------------:|
-| Area under the curve       |          1         |
-| Autocorrelation            |          1         |
-| Centroid                   |          1         |
-| Mean absolute diff         |          1         |
-| Mean diff                  |          1         |
-| Median absolute diff       |          1         |
-| Median diff                |          1         |
-| Negative turning points    |          1         |
-| Peak to peak distance      |          1         |
-| Positive turning points    |          1         |
-| Signal distance            |          1         |
-| Slope                      |          1         |
-| Sum absolute diff          |          1         |
-| Zero crossing rate         |          1         |
-| Neighbourhood peaks        |          1         |
+
 
 
 #### Spectral domain
@@ -124,9 +104,9 @@ X = dream.time_series_features_extractor(cfg, df)
 
 
 ## Citing
-For citation, use the following publication:
+For citation:
 
-Khadka et al. "*DREAM:A python framework to train deep learning models with model card reporting for medical and health applications*" . [https://doi.org/10.106/j.softx.2024.106](https://doi.org/10.106/j.softx.2024)
+Khadka, ... et al. "*DREAM: Deep Report .*" Software(20). [https://doi.org/106/j.so.16](https://doi.org/106/j.so.16)
 
 ## Acknowledgements
-This work has received funding from the European Union's Horizon 2020 research and innovation program under grant agreement No. 964220. We conducted experiments on the Experimental Infrastructure for Exploration of Exascale Computing (eX3) system, financially supported by RCN under contract 270053.
+This project...

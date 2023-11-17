@@ -6,14 +6,13 @@ Welcome to DREAM documentation!
     :scale: 35 %
     :alt: DREAM!
 
-Time Series Feature Extraction Library (DREAM for short) is a Python package for feature extraction on time series data. It provides exploratory feature extraction tasks on time series without requiring significant programming effort. DREAM automatically extracts over 60 different features on the statistical, temporal and spectral domains. DREAM was built by data scientists for data scientists!
+Deep Report for AI Models (DREAM for short) is a Python package for model training, testing and building model card reports. 
 
 Highlights
 ==========
 
 - **Intuitive, fast deployment and reproducible**: interactive UI for feature selection and customization
-- **Computational complexity evaluation**: estimate the computational effort before extracting features
-- **Comprehensive documentation**: each feature extraction method has a detailed explanation
+- **Comprehensive documentation**: each method has a detailed explanation
 - **Unit tested**: we provide unit tests for each feature
 - **Easily extended**: adding new features is easy and we encourage you to contribute with your custom features
 

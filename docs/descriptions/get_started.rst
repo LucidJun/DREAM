@@ -7,7 +7,7 @@ Overview
 
 Time series are passed as inputs for the main DREAM extraction method, either as arrays previously loaded in memory or stored in files on a dataset. Since DREAM can handle multidimensional time series, a set of preprocessing methods is afterwards applied to ensure that the signal quality is adequate and time series synchronisation so that the window calculation process is properly achieved. After the feature extraction, the result is saved using a standard schema ready to be digested by most of the classification and data mining platforms. Each line corresponds to a window with the results of the feature extraction methods stored along with the corresponding columns.
 
-.. image:: ../imgs/tsfel_pipeline.png
+.. image:: ../imgs/logo.png
     :align: center
     :scale: 25 %
     :alt: DREAM!
