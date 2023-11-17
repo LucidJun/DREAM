@@ -1,2 +1,2 @@
-from tsfel.utils import *
-from tsfel.feature_extraction import *
+from dream.utils import *
+from dream.feature_extraction import *
