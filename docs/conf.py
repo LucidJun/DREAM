@@ -24,9 +24,12 @@ import sys
 print(sys.path)
 
 if os.environ.get('READTHEDOCS', None) == 'True':
-
+  
+    """
     module_dir = os.path.abspath(os.path.join(os.getcwd(), '..', 'dream'))
     output_dir = os.path.abspath(os.path.join(os.getcwd(), '../docs/descriptions/modules'))
+    print(output_dir)
+    print(module_dir)
     
     apidoc.main(['-f', '-o', output_dir, module_dir])
 
@@ -39,7 +42,7 @@ if os.environ.get('READTHEDOCS', None) == 'True':
     cmd_line = cmd_line_template.format(outputdir=output_dir, moduledir=module_dir)
     apidoc.main(cmd_line.split(" "))
 
-    """
+    
 
 # -- General configuration ------------------------------------------------
 
