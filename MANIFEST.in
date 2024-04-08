@@ -1,2 +1,2 @@
-include LICENSE.txt
-include requirements.txt
+recursive-include dream/assets *
+

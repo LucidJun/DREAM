@@ -1,43 +1,44 @@
-import setuptools
-from pathlib import Path
 
-ROOT = Path(__file__).parent
+from setuptools import setup, find_packages
+import os
 
-with open("README.md", "r") as fh:
-    long_description = fh.read()
-
-
-def find_requirements(filename):
-    with (ROOT / "requirements" / filename).open() as f:
-        return [
-            s
-            for s in [line.strip(" \n") for line in f]
-            if not s.startswith("#") and s != ""
-        ]
+# Function to read the list of dependencies from requirements.txt
+def load_requirements(filename='requirements.txt'):
+    with open(filename, 'r') as file:
+        return file.read().splitlines()
 
 
-install_reqs = find_requirements("requirements.txt")
-docs_require = find_requirements("requirements-docs.txt")
 
-setuptools.setup(
-    name="dream",
-    version="0.1",
-    author="Piinyin",
+ 
+setup(
+    name='DREAMS-MC',
+    version='0.1.0',
+    author="LucidMoon",
+    packages=find_packages(),
     description="Library for DL models reporting",
-    long_description=long_description,
-    long_description_content_type="text/markdown",
-    url="https://github.com/Piinyin/DREAM",
-    package_data={
-        "dream": ["feature_extraction/features.json"]
-    },
-    packages=setuptools.find_packages(),
+    url="https://github.com/LucidJun/DREAM",
+    package_data={'dreams': ['assets/css/*.css', 'assets/js/*.js', 
+                            'assets/vendor/bootstrap/css/bootstrap.min.css',
+                            'assets/vendor/font-awesome/css/all.min.css',
+                            'assets/vendor/magnific-popup/magnific-popup.min.css',
+                            'assets/vendor/highlight.js/styles/github.css',
+                            'assets/vendor/jquery/jquery.min.js',
+                            'assets/vendor/bootstrap/js/bootstrap.bundle.min.js'
+                            'assets/vendor/highlight.js/highlight.min.js',
+                            'assets/vendor/jquery.easing/jquery.easing.min.js',
+                            'assets/vendor/magnific-popup/jquery.magnific-popup.min.js',
+
+                            ] },
+    include_package_data=True,
+    install_requires=load_requirements(),
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: BSD License",
         "Operating System :: OS Independent",
     ],
-    install_requires=install_reqs,
-    extras_require={
-        "docs": docs_require,
+    entry_points={
+        'console_scripts': [
+            'dreams=dreams.make_html:generate_modelcard',  # Creates a command-line script
+        ],
     },
 )
