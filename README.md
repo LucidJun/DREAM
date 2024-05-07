@@ -23,14 +23,14 @@ dreams` is a Python package designed to simplify the process of creating compreh
 You can install the `dreams` package using pip:
 
 ```python
-pip install git+https://github.com/LucidJun/DREAMS.git
+pip install dreams
 
+```
 
-
-Advanced users can take full potential of DREAMS by installing as a python package
+Advanced users can take full potential of DREAMS by installing as a python package.
 
 ```python
-pip install dreams
+pip install git+https://github.com/LucidJun/DREAM.git
 
 ```
 
