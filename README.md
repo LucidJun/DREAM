@@ -1,13 +1,12 @@
-[![Documentation Status](https://readthedocs.org/projects/dreams/badge/?version=latest)](https://dream.readthedocs.io/en/latest/?badge=latest)
+[![Documentation Status](https://readthedocs.org/projects/dreams/badge/?version=latest)](https://dreams_mc.readthedocs.io/en/latest/?badge=latest)
 [![license](https://img.shields.io/badge/License-BSD%203-brightgreen)](https://github.com/pinnyin/dream/blob/master/LICENSE.txt)
-![PyPI - Python Version](https://img.shields.io/pypi/pyversions/dreams)
-![PyPI](https://img.shields.io/pypi/v/dreams)
-[![Downloads](https://pepy.tech/badge/dreams)](https://pepy.tech/project/dreams)
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/pinnyin/dreams/blob/master/notebooks/EEG_Example.ipynb)
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/dreams_mc)
+[![Downloads](https://pepy.tech/badge/dreams_mc)](https://pepy.tech/project/dreams_mc)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/dreams_mc/blob/master/notebooks/EEG_Example.ipynb)
 
 # Deep Report for AI Models (DREAMS)
 
-dreams` is a Python package designed to simplify the process of creating comprehensive model cards for deep learning models. Model cards are crucial for documenting the performance, usage, and limitations of AI models, promoting transparency and ethical use of AI.
+`dreams_mc` is a Python package designed to simplify the process of creating comprehensive model cards for deep learning models. Model cards(mc) are crucial for documenting the performance, usage, and limitations of AI models, promoting transparency and ethical use of AI.
 
 
 
@@ -67,10 +66,8 @@ The config.yaml file should contain sections for your project overview, dataset 
 
 
 
-## Citing
-For citation:
+[## Citing]:#
+[For citation]:#
 
-Khadka, ... et al. "*DREAMS: Deep Report .*" Software(20). [https://doi.org/106/j.so.16](https://doi.org/106/j.so.16)
 
-## Acknowledgements
-This project...
+[## Acknowledgements]: #

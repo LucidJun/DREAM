@@ -11,13 +11,13 @@ def load_requirements(filename='requirements.txt'):
 
  
 setup(
-    name='DREAMS-MC',
-    version='0.1.0',
+    name='dreams-mc',
+    version='0.0.0',
     author="LucidMoon",
     packages=find_packages(),
     description="Library for DL models reporting",
     url="https://github.com/LucidJun/DREAM",
-    package_data={'dreams': ['assets/css/*.css', 'assets/js/*.js', 
+    package_data={'dreams_mc': ['assets/css/*.css', 'assets/js/*.js', 
                             'assets/vendor/bootstrap/css/bootstrap.min.css',
                             'assets/vendor/font-awesome/css/all.min.css',
                             'assets/vendor/magnific-popup/magnific-popup.min.css',
@@ -38,7 +38,7 @@ setup(
     ],
     entry_points={
         'console_scripts': [
-            'dreams=dreams.make_html:generate_modelcard',  # Creates a command-line script
+            'dreams-mc=dreams_mc.make_model_card:generate_modelcard',  # Creates a command-line script
         ],
     },
 )
