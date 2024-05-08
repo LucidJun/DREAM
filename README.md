@@ -22,7 +22,7 @@
 You can install the `dreams` package using pip:
 
 ```python
-pip install dreams
+pip install dreams_mc
 
 ```
 
