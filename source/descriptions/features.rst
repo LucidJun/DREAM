@@ -2,7 +2,7 @@ List of available attributes in config file
 =============================================
 
 The list of attributes correpsonds to the configurable variables in the 'config.yaml'. The path of the 'config.yaml' file should be given as the one of the input parameters for genreat_modelcard(). The table below outlines the attributes that can be filled in the model card for the current version of dreams_mc.
-See the template of the config file `here <https://github.com/LucidJun/DREAM>`_.
+See the template of the config file `here <https://github.com/LucidJun/DREAM/tree/main/template>`_.
 
 
 .. autosummary::

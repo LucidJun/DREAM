@@ -66,7 +66,7 @@ Setting up the pipeline for generating model card
 We initialize the TSception model and define its hyperparameters. Next, we configure the training and validation processes using PyTorch Lightning's "fit" method. 
 After completing these steps, we employ a custom plotting function to generate and save plots for accuracy, loss, and the confusion matrix in the designated folder. 
 Finally, we invoke the generate_model_card() function, which requires the path to the YAML config file, the output path for saving the model card, and the model card's
-version number. The template of the config file is `here <https://github.com/LucidJun/DREAM>`_.
+version number. The template of the config file is `here <https://github.com/LucidJun/DREAM/tree/main/template>`_.
 
 .. code:: python
 
