@@ -1,0 +1,80 @@
+
+model_version: V.1.0 # version number of the model
+logo_path: /Users/rabindra/Developer/LucidJun/imgs/ai_mind_logo.png # path to the project or organisation logo
+dataset_name: TUH Abnormal # name of the dataset used.
+num_target_class: Two # Classes to predict in supervised setting
+ground_truth: Health status (abnormal or normal) # Target label for regression 
+split_ratio: "80:20" # split ratio for dataset
+
+# Preprocessing steps applied to the data
+preprocess_steps: |
+  Independent Component Analysis, Band Pass Filtering, Normalization.
+
+
+model_type: Convolutional Neural Net # Type of the model 
+learning_approach: Supervised # Learning setting
+
+# Model´s Input (as a list) .
+model_input: 
+  - 19-channel EEG data in time domain.
+
+# Model´s Output (as a list).
+model_output:
+  - Classification of the subject as abnormal or normal class.
+  - Confidence interval of model's performance.
+
+# Overview of the  model report
+describe_overview: |
+  The model analyzed in this card classifies EEG into abnormal or normal class and returns an uncertainty estimation of the
+  predicted class with a confidence interval. It reports the model's hyperparameters and performance plots. The reader can gain further
+  insights about the model's limitation by identifying the input instances where the model is expected to perform well.
+
+# Description of the dataset , if applicable provide the link to the detailed manuscript about the data.
+describe_dataset: |
+  For detail information about the dataset, refer to this <a href="https://openneuro.org/datasets/ds003775/versions/1.2.1">link</a>.
+
+# Description about the model, if applicable provide the link to the detailed manuscript about the model.
+model_details: |
+  Further details about the model is available <a href="https://openneuro.org/datasets/ds003775/versions/1.2.1">here</a>.
+
+learning_rate: 1e-05 # Learning rate used in training
+batch_size: 32 # Batch size used in training
+additional_info: 0.75 M parameters  # Additional information about the model
+
+
+# Describing limitations about the model
+limitation_details: 
+  - The training dataset inherits class imbalance, with a male-to-female ratio of 3:1, which could potentially lead to fairness concerns.
+  - Noisy channels, missing channels in the data will degrade the model's performance.
+
+# Description about the model´s performance
+performance_comments: 
+  Here you can dig into the model's performance on a selection of evaluation datasets drawn from different data sources than the training data.
+  
+ 
+
+# Describe about the uncertanity of the model´s prediction.
+uncertainty_describe: |
+  Confidence intervals provide an additional perspective on the uncertainty surrounding the reported metrics
+  and performance of the model.
+
+# Paths to all the figures
+data_figpath:  /Users/rabindra/Developer/LucidJun/imgs/data_dist.png
+loss_figpath:  /Users/rabindra/Developer/LucidJun/imgs/validation_train_loss.png
+acc_figpath:   /Users/rabindra/Developer/LucidJun/imgs/train_val_acc.png
+cm_figpath:    /Users/rabindra/Developer/LucidJun/imgs/CM.png
+uncertainty_figpath:  /Users/rabindra/Developer/LucidJun/imgs/uncertainty.png
+result_table_figpath: /Users/rabindra/Developer/LucidJun/imgs/result_table.png
+
+# List of references 
+references: |
+  <ol>
+
+    <li>Mitchell, M., Wu, S., Zaldivar, A., Barnes, P., Vasserman, L., Hutchinson, B., Spitzer, E., Raji, I.D. and Gebru, T., 2019, January. Model cards for model reporting.
+        In Proceedings of the conference on fairness, accountability, and transparency (pp. 220-229)</li>
+    
+    <li>Mitchell, M., Wu, S., Zaldivar, A., Barnes, P., Vasserman, L., Hutchinson, B., Spitzer, E., Raji, I.D. and Gebru, T., 2019, January. Model cards for model reporting.
+        In Proceedings of the conference on fairness, accountability, and transparency (pp. 220-229)</li>
+  
+  
+  </ol>
