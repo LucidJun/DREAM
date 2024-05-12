@@ -1,8 +1,9 @@
 [![Documentation Status](https://readthedocs.org/projects/dreams/badge/?version=latest)](https://dreams_mc.readthedocs.io/en/latest/?badge=latest)
-[![license](https://img.shields.io/badge/License-BSD%203-brightgreen)](https://github.com/pinnyin/dream/blob/master/LICENSE.txt)
-![PyPI - Python Version](https://img.shields.io/pypi/pyversions/dreams_mc)
+[![license](https://img.shields.io/badge/License-BSD%203-brightgreen)](https://github.com/LucidDream/dreams_mc/blob/master/LICENSE.txt)
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/dreams_mc/0.0.0/)
 [![Downloads](https://pepy.tech/badge/dreams_mc)](https://pepy.tech/project/dreams_mc)
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/dreams_mc/blob/master/notebooks/EEG_Example.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/LucidJun/DREAM/blob/master/notebooks/EEG_Example.ipynb)
+
 
 # Deep Report for AI Models (DREAMS)
 

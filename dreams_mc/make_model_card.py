@@ -17,11 +17,14 @@ def generate_modelcard(config_file_path,output_path,version_num):
         config_file_path (str): Path to the YAML-style config file.
         output_path (str): Path to save the generated HTML file.
         version_num (str): Version number of the model.
-        uncert_desc (str, optional): Description of the uncertainty,
-            if applicable. Defaults to None.
+        
 
     Raises:
         Exception: If an error occurs during processing.
+
+    Returns: 
+       Model card in html format in the specified output path.
+
     """
 
 
