@@ -15,7 +15,7 @@ setup(
     version='0.0.0',
     author="LucidMoon",
     packages=find_packages(),
-    description="Library for DL models reporting",
+    description="Library for DL models reporting. dreams_mc is a Python package designed to simplify the process of creating comprehensive model cards for deep learning models. Model cards(mc) are crucial for documenting the performance, usage, and limitations of AI models, promoting transparency and ethical use of AI.",
     url="https://github.com/LucidJun/DREAM",
     package_data={'dreams_mc': ['assets/css/*.css', 'assets/js/*.js', 
                             'assets/vendor/bootstrap/css/bootstrap.min.css',
