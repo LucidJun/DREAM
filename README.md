@@ -1,6 +1,6 @@
 [![Documentation Status](https://readthedocs.org/projects/dreams/badge/?version=latest)](https://dreams_mc.readthedocs.io/en/latest/?badge=latest)
 [![license](https://img.shields.io/badge/License-BSD%203-brightgreen)](https://github.com/LucidJun/DREAM/blob/main/LICENSE.txt)
-![PyPI - Python Version][(https://img.shields.io/pypi/pyversions/dreams_mc)](https://pypi.org/project/dreams-mc/)
+[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/dreams_mc)](https://pypi.org/project/dreams-mc/)
 [![Downloads](https://pepy.tech/badge/dreams_mc)](https://pepy.tech/project/dreams_mc)
 
 
