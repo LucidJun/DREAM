@@ -1,12 +1,14 @@
 import os
 import base64
 import yaml
+import pkg_resources
 from importlib.resources import files
 import datetime
 
 
 def embed_file_content(file_path, tag_type):
-    with open(file_path, 'r') as file:
+    full_path = pkg_resources.resource_filename(__name__, file_path)
+    with open(full_path, 'r') as file:
         content = file.read()
     if tag_type == 'css':
         return f'<style>\n{content}\n</style>'
@@ -25,19 +27,19 @@ def generate_modelcard(config_file_path, output_path, version_num):
         config = yaml.safe_load(f)
 
     # Embedding CSS files
-    bootstrap_css = embed_file_content('/Users/rabindra/Developer/LucidJun/DREAMS/dreams_mc/assets/vendor/bootstrap/css/bootstrap.min.css', 'css')
-    font_awesome_css = embed_file_content('/Users/rabindra/Developer/LucidJun/DREAMS/dreams_mc/assets/vendor/font-awesome/css/all.min.css', 'css')
-    magnific_popup_css = embed_file_content('/Users/rabindra/Developer/LucidJun/DREAMS/dreams_mc/assets/vendor/magnific-popup/magnific-popup.min.css', 'css')
-    highlight_css = embed_file_content('/Users/rabindra/Developer/LucidJun/DREAMS/dreams_mc/assets/vendor/highlight.js/styles/github.css', 'css')
-    custom_stylesheet = embed_file_content('/Users/rabindra/Developer/LucidJun/DREAMS/dreams_mc/assets/css/stylesheet.css', 'css')
+    bootstrap_css = embed_file_content('assets/vendor/bootstrap/css/bootstrap.min.css', 'css')
+    font_awesome_css = embed_file_content('assets/vendor/font-awesome/css/all.min.css', 'css')
+    magnific_popup_css = embed_file_content('assets/vendor/magnific-popup/magnific-popup.min.css', 'css')
+    highlight_css = embed_file_content('assets/vendor/highlight.js/styles/github.css', 'css')
+    custom_stylesheet = embed_file_content('assets/css/stylesheet.css', 'css')
 
     # Embedding JavaScript files
-    jquery_js = embed_file_content('/Users/rabindra/Developer/LucidJun/DREAMS/dreams_mc/assets/vendor/jquery/jquery.min.js', 'js')
-    bootstrap_js = embed_file_content('/Users/rabindra/Developer/LucidJun/DREAMS/dreams_mc/assets/vendor/bootstrap/js/bootstrap.bundle.min.js', 'js')
-    highlight_js = embed_file_content('/Users/rabindra/Developer/LucidJun/DREAMS/dreams_mc/assets/vendor/highlight.js/highlight.min.js', 'js')
-    easing_js = embed_file_content('/Users/rabindra/Developer/LucidJun/DREAMS/dreams_mc/assets/vendor/jquery.easing/jquery.easing.min.js', 'js')
-    magnific_popup_js = embed_file_content('/Users/rabindra/Developer/LucidJun/DREAMS/dreams_mc/assets/vendor/magnific-popup/jquery.magnific-popup.min.js', 'js')
-    theme_js = embed_file_content('/Users/rabindra/Developer/LucidJun/DREAMS/dreams_mc/assets/js/theme.js', 'js')
+    jquery_js = embed_file_content('assets/vendor/jquery/jquery.min.js', 'js')
+    bootstrap_js = embed_file_content('assets/vendor/bootstrap/js/bootstrap.bundle.min.js', 'js')
+    highlight_js = embed_file_content('assets/vendor/highlight.js/highlight.min.js', 'js')
+    easing_js = embed_file_content('assets/vendor/jquery.easing/jquery.easing.min.js', 'js')
+    magnific_popup_js = embed_file_content('assets/vendor/magnific-popup/jquery.magnific-popup.min.js', 'js')
+    theme_js = embed_file_content('assets/js/theme.js', 'js')
 
     # Embedding images
     logo_image = embed_image(config['logo_path'])
