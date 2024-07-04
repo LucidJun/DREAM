@@ -1,25 +1,52 @@
+import os
+import base64
 import yaml
 from importlib.resources import files
 import datetime
 
+
+def embed_file_content(file_path, tag_type):
+    with open(file_path, 'r') as file:
+        content = file.read()
+    if tag_type == 'css':
+        return f'<style>\n{content}\n</style>'
+    elif tag_type == 'js':
+        return f'<script>\n{content}\n</script>'
+
+def embed_image(image_path):
+    with open(image_path, 'rb') as image_file:
+        encoded_string = base64.b64encode(image_file.read()).decode('utf-8')
+    mime_type = f"image/{os.path.splitext(image_path)[1][1:]}"
+    return f'data:{mime_type};base64,{encoded_string}'
+
 def generate_modelcard(config_file_path, output_path, version_num):
+    import yaml
     with open(config_file_path, "r") as f:
         config = yaml.safe_load(f)
 
-    """
-    Generates an HTML model card report using a Jinja2 template and conditional rendering.
+    # Embedding CSS files
+    bootstrap_css = embed_file_content('/Users/rabindra/Developer/LucidJun/DREAMS/dreams_mc/assets/vendor/bootstrap/css/bootstrap.min.css', 'css')
+    font_awesome_css = embed_file_content('/Users/rabindra/Developer/LucidJun/DREAMS/dreams_mc/assets/vendor/font-awesome/css/all.min.css', 'css')
+    magnific_popup_css = embed_file_content('/Users/rabindra/Developer/LucidJun/DREAMS/dreams_mc/assets/vendor/magnific-popup/magnific-popup.min.css', 'css')
+    highlight_css = embed_file_content('/Users/rabindra/Developer/LucidJun/DREAMS/dreams_mc/assets/vendor/highlight.js/styles/github.css', 'css')
+    custom_stylesheet = embed_file_content('/Users/rabindra/Developer/LucidJun/DREAMS/dreams_mc/assets/css/stylesheet.css', 'css')
 
-    Args:
-        config_file_path (str): Path to the YAML-style config file.
-        output_path (str): Path to save the generated HTML file.
-        version_num (str): Version number of the model.
+    # Embedding JavaScript files
+    jquery_js = embed_file_content('/Users/rabindra/Developer/LucidJun/DREAMS/dreams_mc/assets/vendor/jquery/jquery.min.js', 'js')
+    bootstrap_js = embed_file_content('/Users/rabindra/Developer/LucidJun/DREAMS/dreams_mc/assets/vendor/bootstrap/js/bootstrap.bundle.min.js', 'js')
+    highlight_js = embed_file_content('/Users/rabindra/Developer/LucidJun/DREAMS/dreams_mc/assets/vendor/highlight.js/highlight.min.js', 'js')
+    easing_js = embed_file_content('/Users/rabindra/Developer/LucidJun/DREAMS/dreams_mc/assets/vendor/jquery.easing/jquery.easing.min.js', 'js')
+    magnific_popup_js = embed_file_content('/Users/rabindra/Developer/LucidJun/DREAMS/dreams_mc/assets/vendor/magnific-popup/jquery.magnific-popup.min.js', 'js')
+    theme_js = embed_file_content('/Users/rabindra/Developer/LucidJun/DREAMS/dreams_mc/assets/js/theme.js', 'js')
 
-    Raises:
-        Exception: If an error occurs during processing.
-
-    Returns: 
-       Model card in html format in the specified output path.
-    """
+    # Embedding images
+    logo_image = embed_image(config['logo_path'])
+    data_image = embed_image(config['data_figpath'])
+    result_table_image = embed_image(config['result_table_figpath'])
+    cm_image = embed_image(config['cm_figpath'])
+    acc_image = embed_image(config['acc_figpath'])
+    loss_image = embed_image(config['loss_figpath'])
+    uncertainty_image = embed_image(config['uncertainty_figpath'])
 
     output_list = config['model_output']
     output_html = "<ul>"
@@ -39,23 +66,8 @@ def generate_modelcard(config_file_path, output_path, version_num):
         limitation_html += f"<li>{item}</li>"
     limitation_html += "</ul>"
 
-    # Dynamically resolve the paths to CSS files
-    bootstrap_css_path = files('dreams_mc').joinpath('assets/vendor/bootstrap/css/bootstrap.min.css')
-    font_awesome_css_path = files('dreams_mc').joinpath('assets/vendor/font-awesome/css/all.min.css')
-    magnific_popup_css_path = files('dreams_mc').joinpath('assets/vendor/magnific-popup/magnific-popup.min.css')
-    highlight_css_path = files('dreams_mc').joinpath('assets/vendor/highlight.js/styles/github.css')
-    custom_stylesheet_path = files('dreams_mc').joinpath('assets/css/stylesheet.css')
-
-    # JavaScript paths
-    jquery_path = files('dreams_mc').joinpath('assets/vendor/jquery/jquery.min.js')
-    bootstrap_path = files('dreams_mc').joinpath('assets/vendor/bootstrap/js/bootstrap.bundle.min.js')
-    highlight_js_path = files('dreams_mc').joinpath('assets/vendor/highlight.js/highlight.min.js')
-    easing_path = files('dreams_mc').joinpath('assets/vendor/jquery.easing/jquery.easing.min.js')
-    magnific_popup_path = files('dreams_mc').joinpath('assets/vendor/magnific-popup/jquery.magnific-popup.min.js')
-    theme_js_path = files('dreams_mc').joinpath('assets/js/theme.js')
-
     try:
-        # Define the HTML template
+        # Define the HTML template with inlined CSS and JavaScript
         model_card = f'''
         <!DOCTYPE html>
         <html lang="en">
@@ -63,22 +75,21 @@ def generate_modelcard(config_file_path, output_path, version_num):
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
-        <link href="{config['logo_path']}" rel="icon" />
+        <link href="{logo_image}" rel="icon" />
         <title>Overview | Your ThemeForest item Name</title>
 
-        <!-- Stylesheet -->
+        <!-- Inline CSS -->
+        {bootstrap_css}
+        {font_awesome_css}
+        {magnific_popup_css}
+        {highlight_css}
+        {custom_stylesheet}
         <style>
             .responsive-img {{
                 max-width: 100%;
                 height: auto;
             }}
         </style>
-
-        <link rel="stylesheet" type="text/css" href="{bootstrap_css_path}" />
-        <link rel="stylesheet" type="text/css" href="{font_awesome_css_path}" />
-        <link rel="stylesheet" type="text/css" href="{magnific_popup_css_path}" />
-        <link rel="stylesheet" type="text/css" href="{highlight_css_path}" />
-        <link rel="stylesheet" type="text/css" href="{custom_stylesheet_path}" />
         </head>
 
         <body data-spy="scroll" data-target=".idocs-navigation" data-offset="125">
@@ -104,7 +115,7 @@ def generate_modelcard(config_file_path, output_path, version_num):
                         <button id="sidebarCollapse" class="navbar-toggler d-block d-md-none" type="button"><span></span><span></span><span></span></button>
 
                         <!-- Logo --> 
-                        <a class="logo ml-md-3" title="Logo"> <img src="{config['logo_path']}" alt="Logo"/> </a> 
+                        <a class="logo ml-md-3" title="Logo"> <img src="{logo_image}" alt="Logo"/> </a> 
                         
                         <div class="d-flex flex-column ml-md-2">
                             <span class="text-2">{version_num}</span>
@@ -171,8 +182,8 @@ def generate_modelcard(config_file_path, output_path, version_num):
                             <br>
                             <p style="text-align: justify;">{config['describe_dataset']}</p>
                             <div style="flex: 1; padding: 10px;">
-                                <a class="popup-img" href={config['data_figpath']}>
-                                    <img src={config['data_figpath']} class="img-fluid img-thumbnail responsive-img" alt="image 1">
+                                <a class="popup-img" href="{data_image}">
+                                    <img src="{data_image}" class="img-fluid img-thumbnail responsive-img" alt="image 1">
                                 </a>
                             </div>
                         </section>
@@ -205,25 +216,25 @@ def generate_modelcard(config_file_path, output_path, version_num):
                             <p>{config['performance_comments']}<br></p>
                             <div style="display: flex; flex-direction: row;">
                                 <div style="flex: 1; padding: 10px;">
-                                    <a class="popup-img" href={config['result_table_figpath']}>
-                                        <img src={config['result_table_figpath']} class="img-fluid img-thumbnail responsive-img" alt="image 1">
+                                    <a class="popup-img" href="{result_table_image}">
+                                        <img src="{result_table_image}" class="img-fluid img-thumbnail responsive-img" alt="image 1">
                                     </a>
                                 </div>
                                 <div style="flex: 1; padding: 10px;">
-                                    <a class="popup-img" href={config['cm_figpath']}>
-                                        <img src={config['cm_figpath']} class="img-fluid img-thumbnail responsive-img" alt="image 2">
+                                    <a class="popup-img" href="{cm_image}">
+                                        <img src="{cm_image}" class="img-fluid img-thumbnail responsive-img" alt="image 2">
                                     </a>
                                 </div>
                             </div>
                             <div style="display: flex; flex-direction: row;">
                                 <div style="flex: 1; padding: 10px;">
-                                    <a class="popup-img" href={config['acc_figpath']}>
-                                        <img src={config['acc_figpath']} class="img-fluid img-thumbnail responsive-img" alt="image 1">
+                                    <a class="popup-img" href="{acc_image}">
+                                        <img src="{acc_image}" class="img-fluid img-thumbnail responsive-img" alt="image 1">
                                     </a>
                                 </div>
                                 <div style="flex: 1; padding: 10px;">
-                                    <a class="popup-img" href={config['loss_figpath']}>
-                                        <img src={config['loss_figpath']} class="img-fluid img-thumbnail responsive-img" alt="image 2">
+                                    <a class="popup-img" href="{loss_image}">
+                                        <img src="{loss_image}" class="img-fluid img-thumbnail responsive-img" alt="image 2">
                                     </a>
                                 </div>
                             </div>
@@ -244,8 +255,8 @@ def generate_modelcard(config_file_path, output_path, version_num):
                             <h2 style="color: #5da834;">Uncertainty</h2>
                             <p style="text-align: justify;">{config['uncertainty_describe']}<br></p>
                             <div style="flex: 1; padding: 10px;">
-                                <a class="popup-img" href={config['uncertainty_figpath']}>
-                                    <img src={config['uncertainty_figpath']} class="img-fluid img-thumbnail responsive-img" alt="image 1">
+                                <a class="popup-img" href="{uncertainty_image}">
+                                    <img src="{uncertainty_image}" class="img-fluid img-thumbnail responsive-img" alt="image 1">
                                 </a>
                             </div>
                         </section>
@@ -268,13 +279,13 @@ def generate_modelcard(config_file_path, output_path, version_num):
         <!-- Back To Top --> 
         <a id="back-to-top" data-toggle="tooltip" title="Back to Top" href="javascript:void(0)"><i class="fa fa-chevron-up"></i></a> 
 
-        <!-- JavaScript -->
-        <script src="{jquery_path}"></script>
-        <script src="{bootstrap_path}"></script>
-        <script src="{highlight_js_path}"></script>
-        <script src="{easing_path}"></script>
-        <script src="{magnific_popup_path}"></script>
-        <script src="{theme_js_path}"></script>
+        <!-- Inline JavaScript -->
+        {jquery_js}
+        {bootstrap_js}
+        {highlight_js}
+        {easing_js}
+        {magnific_popup_js}
+        {theme_js}
         </body>
         </html>
         '''
@@ -288,4 +299,4 @@ def generate_modelcard(config_file_path, output_path, version_num):
 
 # Example usage
 if __name__ == "__main__":
-    generate_modelcard("/Users/rabindra/Developer/LucidJun/mc_config.yaml", "/Users/rabindra/Developer/LucidJun/model_card.html","V1.1")
+  generate_modelcard("/Users/rabindra/Developer/LucidJun/mc_config.yaml", "/Users/rabindra/Developer/LucidJun/model_card_inline.html","V1.1")

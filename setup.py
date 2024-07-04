@@ -12,11 +12,13 @@ def load_requirements(filename='requirements.txt'):
  
 setup(
     name='dreams-mc',
-    version='0.0.0',
+    version='0.0.2',
     author="LucidMoon",
     packages=find_packages(),
     description="Library for DL models reporting. dreams_mc is a Python package designed to simplify the process of creating comprehensive model cards for deep learning models. Model cards(mc) are crucial for documenting the performance, usage, and limitations of AI models, promoting transparency and ethical use of AI.",
     url="https://github.com/LucidJun/DREAM",
+    long_description=open('README.md').read(),
+    long_description_content_type='text/markdown',
     package_data={'dreams_mc': ['assets/css/*.css', 'assets/js/*.js', 
                             'assets/vendor/bootstrap/css/bootstrap.min.css',
                             'assets/vendor/font-awesome/css/all.min.css',

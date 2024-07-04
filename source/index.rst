@@ -41,7 +41,7 @@ To generate a model card, ensure you have a configuration file (config.yaml) pre
 
 .. code:: python
 
-   from dreams.make_model_card import generate_modelcard
+   from dreams_mc.make_model_card import generate_modelcard
 
    # Path to your configuration file
    config_file_path = '/path/to/your/config.yaml'
