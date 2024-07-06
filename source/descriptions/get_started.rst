@@ -60,6 +60,8 @@ version number. The template of the config file is `here <https://github.com/Luc
     from dreams_mc.make_model_card import generate_modelcard
 
 
+
+
     data_folder= "./processed_data_Face/Processed_data"
 
     dataset = FACEDDataset(root_path=data_folder,
@@ -67,8 +69,8 @@ version number. The template of the config file is `here <https://github.com/Luc
                            [transforms.ToTensor(),
                             transforms.To2d()]),
                        label_transform=transforms.Compose([
-                           transforms.Select('emotion'),
-                           #transforms.Lambda(lambda x: x + 1)
+                           transforms.Select('valence'),
+                           transforms.Lambda(lambda x: x + 1)
                        ]))
     
     # dataloaders
@@ -108,129 +110,115 @@ version number. The template of the config file is `here <https://github.com/Luc
         acc = correct_pred.sum() / len(correct_pred)
         return acc
 
-    optimizer = torch.optim.SGD(model.parameters(), lr=0.01, momentum=0.9)
-    scheduler = torch.optim.lr_scheduler.CyclicLR(optimizer, base_lr=0.000001, max_lr=0.01)
-    criterion = nn.CrossEntropyLoss()
-
-    accuracy_stats = {
-    'train': [],
-    "val": []
-    }
-    loss_stats = {
-    'train': [],
-    "val": []
-    }
+  
 
     # Training  and validation function
      
 
-    def train( n_epochs, val_acc_max_input ,model, optimizer, criterion, checkpoint_path, best_model_path,start_epoch=1):
+    def train(n_epochs, val_acc_max_input, model, optimizer, criterion, scheduler, train_loader, val_loader, checkpoint_path, best_model_path, start_epoch=1):
+        val_acc_max = val_acc_max_input
+        accuracy_stats = {'train': [], 'val': []}
+        loss_stats = {'train': [], 'val': []}
         
-        
-        val_acc_max = val_acc_max_input 
-        for e in tqdm(range(start_epoch, n_epochs+1)):
-            
+        for e in tqdm(range(start_epoch, n_epochs + 1)):
             # TRAINING
             train_epoch_loss = 0
             train_epoch_acc = 0
             model.train()
             for X_train_batch, y_train_batch in train_loader:
-
                 X_train_batch, y_train_batch = X_train_batch.to(device), y_train_batch.to(device)
                 optimizer.zero_grad()
                 y_train_pred = model(X_train_batch)
-
                 train_loss = criterion(y_train_pred, y_train_batch)
                 train_acc = compute_accuracy(y_train_pred, y_train_batch)
                 
                 train_loss.backward()
                 optimizer.step()
-                scheduler.step()
+
                 
                 train_epoch_loss += train_loss.item()
                 train_epoch_acc += train_acc.item()
                 
-                
-            # VALIDATION    
+            # VALIDATION
             with torch.no_grad():
-                
                 val_epoch_loss = 0
                 val_epoch_acc = 0
-                
                 model.eval()
                 for X_val_batch, y_val_batch in val_loader:
                     X_val_batch, y_val_batch = X_val_batch.to(device), y_val_batch.to(device)
-                    
                     y_val_pred = model(X_val_batch)
-                                
                     val_loss = criterion(y_val_pred, y_val_batch)
                     val_acc = compute_accuracy(y_val_pred, y_val_batch)
                     
                     val_epoch_loss += val_loss.item()
                     val_epoch_acc += val_acc.item()
 
-            loss_stats['train'].append(train_epoch_loss/len(train_loader))
-            loss_stats['val'].append(val_epoch_loss/len(val_loader))
-            accuracy_stats['train'].append(train_epoch_acc/len(train_loader))
-            accuracy_stats['val'].append(val_epoch_acc/len(val_loader))
+            loss_stats['train'].append(train_epoch_loss / len(train_loader))
+            loss_stats['val'].append(val_epoch_loss / len(val_loader))
+            accuracy_stats['train'].append(train_epoch_acc / len(train_loader))
+            accuracy_stats['val'].append(val_epoch_acc / len(val_loader))
 
+            valid_accuracy = val_epoch_acc / len(val_loader)
 
-            valid_accuracy= val_epoch_acc/len(val_loader)
+            print(f'Epoch {e:03}: | Train Loss: {train_epoch_loss / len(train_loader):.5f} | Val Loss: {val_epoch_loss / len(val_loader):.5f} | Train Acc: {train_epoch_acc / len(train_loader):.3f} | Val Acc: {val_epoch_acc / len(val_loader):.3f}')
+            
+            scheduler.step(val_epoch_loss / len(val_loader))
 
-            print(f'Epoch {e+0:03}: | Train Loss: {train_epoch_loss/len(train_loader):.5f} | Val Loss: {val_epoch_loss/len(val_loader):.5f} | Train Acc: {train_epoch_acc/len(train_loader):.3f}| Val Acc: {val_epoch_acc/len(val_loader):.3f}')
-
-
-            # create checkpoint variable and add important data
+            # Create checkpoint variable and add important data
             checkpoint = {
-                    'epoch': e + 1,
-                    'valid_acc_max': valid_accuracy,
-                    'state_dict': model.state_dict(),
-                    'optimizer': optimizer.state_dict(),
-                }
+                'epoch': e + 1,
+                'valid_acc_max': valid_accuracy,
+                'state_dict': model.state_dict(),
+                'optimizer': optimizer.state_dict(),
+            }
             save_ckp(checkpoint, False, checkpoint_path, best_model_path)
 
             if valid_accuracy > val_acc_max:
-                    print('Validation accuracy increased ({:.6f} --> {:.6f}).  Saving model ...'.format(val_acc_max,valid_accuracy))
-                    # save checkpoint as best model
-                    save_ckp(checkpoint, True, checkpoint_path, best_model_path)
-                    val_acc_max = valid_accuracy
-                    
-        return model
+                print(f'Validation accuracy increased ({val_acc_max:.6f} --> {valid_accuracy:.6f}).  Saving model ...')
+                save_ckp(checkpoint, True, checkpoint_path, best_model_path)
+                val_acc_max = valid_accuracy
+
+        return model, accuracy_stats, loss_stats
          
-        # Initiate training 
-        valid_acc_max=0.0
-        trained_model = train(200, valid_acc_max, model, optimizer, criterion, "./current_checkpoint.pt", "./best_model.pt",start_epoch=1)
+    
+   
 
-        #call plotting functions for loss and accuracy to save the plots
-        plot_training_validation_stats(accuracy_stats, loss_stats,save_dir='./')
+    class_names = ['Negative', 'Neutral', 'Positive']  
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-        # Call function to get the metrics
-        results=evaluate_model(model=model,dataloader=val_loader,device=device)
-        print(f"Precision: {results['precision']:.4f}")
-        print(f"Recall: {results['recall']:.4f}")
-        print(f"F1 Score: {results['f1_score']:.4f}")
-        print(f"Accuracy: {results['accuracy']:.4f}")
 
-        # Plot the confusion matrix and save it 
-        class_names = ['Class 0', 'Class 1','Class 2','Class 3','Class 4','Class 5','Class 6','Class 7']  # replace with your actual class names
-        plot_confusion_matrix(results['confusion_matrix'], class_names,save_path="./cm.png")
+    optimizer = optim.Adam(model.parameters(), lr=0.001, weight_decay=1e-4)           
+    #scheduler = optim.lr_scheduler.CyclicLR(optimizer, base_lr=1e-6, max_lr=0.01)
+    scheduler = optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode='min', factor=0.1, patience=10, verbose=True)
 
-        #Unvertainity estimation and save the plot
-        plot_confidence_intervals(precision=results['precision'], recall=results['recall'], accuracy=results['accuracy'], f1=results['f1_score'], n=len(val_dataset),save_path="./CI_plot.png", confidence=0.95)
+    criterion = nn.CrossEntropyLoss()
 
-       # Call Model card function from dreams_mc
+    # Model Training 
+    valid_acc_max = 0.0
+    trained_model, accuracy_stats, loss_stats = train(220, valid_acc_max, model, optimizer, criterion, scheduler, train_loader, val_loader, "./logs/current_checkpoint.pt", "./logs/best_model.pt", start_epoch=1)
+    # plotting and saving training and validation plots 
+    plot_training_validation_stats(accuracy_stats, loss_stats, save_dir='./logs')
 
-       # Path to your configuration file 
-        config_file_path = './config.yaml'
+    # Load the best model for evaluation
+    checkpoint_path = './logs/best_model.pt'
+    checkpoint = torch.load(checkpoint_path, map_location=torch.device('cpu'))
+    model.load_state_dict(checkpoint['state_dict'])
 
-        # Desired output path for the model card HTML file
-        output_path = './model_card.html'
+    # Evaluate the model and saving the required  plots
+    results = evaluate_model(model=model, data_loader=val_loader, device=device)
+    plot_metrics_table(results, model_name='TSception',save_path="./logs/table.png")
+    plot_confusion_matrix(results['confusion_matrix'], class_names,save_path="./logs/cm.png")
+    plot_confidence_intervals(precision=results['precision'], recall=results['recall'], 
+                              accuracy=results['accuracy'], f1=results['f1_score'], 
+                              n=len(val_loader.dataset), save_path="./logs/CI_plot.png", 
+                              confidence=0.95)
 
-        # Version number of your model
-        version_num = '1.0'
-
-        # Generate the model card
-        generate_modelcard(config_file_path, output_path, version_num)
+    # Generating model card
+    print("Generating Model Card....")
+    config_file_path = './config.yaml'
+    output_path = './logs/model_card.html'
+    version_num = '1.0'
+    generate_modelcard(config_file_path, output_path, version_num)
         
 
 
